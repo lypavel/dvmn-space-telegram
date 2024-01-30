@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```
 NASA_TOKEN = "ваш_токен_NASA"
 TG_BOT_TOKEN = "ваш_токен_телеграм_бота"
-TG_CHAT_ID = "ссылка_на_телеграм_канал_или_чат"
+TG_CHAT_ID = "id_телеграм_канала_или_чата"
 ```
 
 ## Использование
