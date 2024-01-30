@@ -5,7 +5,7 @@ import time
 from dotenv import load_dotenv
 from pathlib import Path
 from random import shuffle
-from download_image import get_image
+from download_image import get_image, validate_size
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -45,8 +45,7 @@ def main() -> None:
         shuffle(images)
 
         for image_path in images:
-            # if image size > 20 MB
-            if image_path.stat().st_size >= 20971520:
+            if not validate_size(image_path):
                 continue
 
             image = get_image(image_path)

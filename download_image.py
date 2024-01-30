@@ -31,3 +31,10 @@ def get_image(image_path: Path | str) -> bytes:
         data = stream.read()
 
     return data
+
+
+def validate_size(image_path: Path) -> bool:
+    if image_path.stat().st_size >= 20971520:
+        return True
+    else:
+        return False

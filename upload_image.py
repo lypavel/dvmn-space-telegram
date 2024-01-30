@@ -4,7 +4,7 @@ import argparse
 from dotenv import load_dotenv
 from pathlib import Path
 from random import choice
-from download_image import get_image
+from download_image import get_image, validate_size
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -28,6 +28,9 @@ def specify_image(image_name) -> bytes:
     else:
         image = Path("images/") / image_name
 
+    if not validate_size(image):
+        return
+
     return get_image(image)
 
 
@@ -43,8 +46,8 @@ def main() -> None:
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
 
     image = specify_image(image_name)
-
-    bot.send_photo(photo=image, chat_id=chat_id)
+    if image:
+        bot.send_photo(photo=image, chat_id=chat_id)
 
 
 if __name__ == "__main__":
