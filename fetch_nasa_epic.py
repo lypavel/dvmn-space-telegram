@@ -15,10 +15,10 @@ def fetch_nasa_epic(api_token: str) -> None:
     response = rq.get(api_url, params=payload)
     response.raise_for_status()
 
-    for index, image_info in enumerate(response.json()):
-        name = f"{image_info['image']}.png"
+    for index, epic_image in enumerate(response.json()):
+        name = f"{epic_image['image']}.png"
 
-        full_date = dt.strptime(image_info["date"], "%Y-%m-%d %H:%M:%S").date()
+        full_date = dt.strptime(epic_image["date"], "%Y-%m-%d %H:%M:%S").date()
         day, month, year = full_date.day, full_date.month, full_date.year
 
         image_link = f"{year}/{month:02}/{day:02}/png/{name}"
