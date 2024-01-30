@@ -1,6 +1,6 @@
 import requests as rq
 import os
-from download_image import download_image
+from image_utils import download_image
 from datetime import datetime as dt
 from dotenv import load_dotenv
 

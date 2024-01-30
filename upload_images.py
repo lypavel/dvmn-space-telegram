@@ -5,7 +5,7 @@ import time
 from dotenv import load_dotenv
 from pathlib import Path
 from random import shuffle
-from download_image import get_image, validate_size
+from image_utils import get_image, validate_size
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -19,7 +19,8 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-cd",
         "--cooldown",
-        help="Time between posting images in seconds."
+        help="Time between posting images in seconds.",
+        type=int
     )
 
     return parser
@@ -35,7 +36,7 @@ def main() -> None:
     cooldown = args.cooldown
 
     if not cooldown:
-        cooldown = 3
+        cooldown = 14440
 
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
 
@@ -60,3 +61,5 @@ if __name__ == "__main__":
         main()
     except FileNotFoundError as dir_not_found:
         exit(f"Директория с изображениями не найдена:\n{dir_not_found}")
+    except telegram.error.NetworkError as net_error:
+        print(f"Во время загрузки произошла ошибка:\n{net_error}")

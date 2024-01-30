@@ -1,5 +1,5 @@
 import requests as rq
-from download_image import download_image
+from image_utils import download_image
 import argparse
 
 

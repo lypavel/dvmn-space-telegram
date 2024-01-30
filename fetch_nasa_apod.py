@@ -2,7 +2,7 @@ import requests as rq
 import os
 import argparse
 from dotenv import load_dotenv
-from download_image import get_file_extension, download_image
+from image_utils import get_file_extension, download_image
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -17,7 +17,7 @@ def create_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def fetch_nasa_apod(count) -> None:
+def fetch_nasa_apod(count: int) -> None:
     if not count:
         count = 1
 
