@@ -24,3 +24,10 @@ def get_file_extension(url: str) -> str:
     _, extension = os.path.splitext(full_name)
 
     return extension
+
+
+def get_image(image_path: Path | str) -> bytes:
+    with open(image_path, "rb") as stream:
+        data = stream.read()
+
+    return data

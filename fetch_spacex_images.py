@@ -43,4 +43,4 @@ if __name__ == "__main__":
     try:
         main()
     except rq.exceptions.HTTPError as http_error:
-        print(http_error)
+        exit(f"Ошибка подключения к серверу:\n{http_error}")
