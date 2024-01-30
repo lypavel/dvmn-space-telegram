@@ -17,10 +17,7 @@ def create_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def fetch_nasa_apod(count: int) -> None:
-    if not count:
-        count = 1
-
+def fetch_nasa_apod(count: int = 1) -> None:
     payload = {
         "api_key": os.environ["NASA_TOKEN"],
         "count": count

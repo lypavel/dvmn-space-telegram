@@ -15,11 +15,8 @@ def create_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def fetch_spacex_images(launch_id) -> None:
-    if launch_id:
-        api_url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
-    else:
-        api_url = "https://api.spacexdata.com/v5/launches/latest"
+def fetch_spacex_images(launch_id: str = "latest") -> None:
+    api_url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
 
     response = rq.get(api_url)
     response.raise_for_status()
