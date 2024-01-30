@@ -15,7 +15,6 @@ def create_parser() -> argparse.ArgumentParser:
             in Telegram with specified cooldown. \
         "
     )
-    parser.add_argument("chat_id", help="Telegram chat id.")
     parser.add_argument(
         "-cd",
         "--cooldown",
@@ -33,8 +32,8 @@ def main() -> None:
     parser = create_parser()
     args = parser.parse_args()
 
-    chat_id = args.chat_id
     cooldown = args.cooldown
+    chat_id = os.environ["TG_CHAT_ID"]
 
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
 

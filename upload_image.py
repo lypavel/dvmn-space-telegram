@@ -14,7 +14,6 @@ def create_parser() -> argparse.ArgumentParser:
             in telegram channel.\
         "
     )
-    parser.add_argument("chat_id", help="Telegram chat id.")
     parser.add_argument("--image_name", help="Image name.")
 
     return parser
@@ -40,8 +39,8 @@ def main() -> None:
     parser = create_parser()
     args = parser.parse_args()
 
-    chat_id = args.chat_id
     image_name = args.image_name
+    chat_id = os.environ["TG_CHAT_ID"]
 
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
 
