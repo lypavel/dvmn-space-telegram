@@ -36,7 +36,7 @@ def fetch_nasa_apod(api_key: str, count: int = 1) -> None:
     images = [image["url"] for image in response.json()]
 
     for index, image_link in enumerate(images):
-        extension = (get_file_extension(image_link))
+        extension = get_file_extension(image_link)
         if not extension:
             continue
 
