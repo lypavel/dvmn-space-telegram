@@ -5,9 +5,9 @@ from datetime import datetime as dt
 from dotenv import load_dotenv
 
 
-def fetch_nasa_epic() -> None:
+def fetch_nasa_epic(api_token: str) -> None:
     payload = {
-        "api_key": os.environ["NASA_TOKEN"]
+        "api_key": api_token
     }
 
     api_url = "https://api.nasa.gov/EPIC/api/natural/images"
@@ -35,8 +35,10 @@ def fetch_nasa_epic() -> None:
 def main() -> None:
     load_dotenv()
 
+    nasa_token = os.environ["NASA_TOKEN"]
+
     try:
-        fetch_nasa_epic()
+        fetch_nasa_epic(nasa_token)
     except rq.exceptions.HTTPError as http_error:
         exit(f"Ошибка подключения к серверу:\n{http_error}")
 

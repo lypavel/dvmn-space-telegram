@@ -22,9 +22,9 @@ def create_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def fetch_nasa_apod(count: int = 1) -> None:
+def fetch_nasa_apod(api_key: str, count: int = 1) -> None:
     payload = {
-        "api_key": os.environ["NASA_TOKEN"],
+        "api_key": api_key,
         "count": count
     }
 
@@ -46,13 +46,15 @@ def fetch_nasa_apod(count: int = 1) -> None:
 def main() -> None:
     load_dotenv()
 
+    nasa_token = os.environ["NASA_TOKEN"]
+
     parser = create_parser()
     args = parser.parse_args()
 
     count = args.count
 
     try:
-        fetch_nasa_apod(count)
+        fetch_nasa_apod(nasa_token, count)
     except rq.exceptions.HTTPError as http_error:
         exit(f"Ошибка подключения к серверу:\n{http_error}")
 
