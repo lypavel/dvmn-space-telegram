@@ -4,9 +4,11 @@ from urllib.parse import urlsplit, unquote
 from pathlib import Path
 
 
-def download_image(url: str, file_path: str, payload: dict = None) -> None:
-    if not payload:
-        payload = {}
+def download_image(
+    url: str,
+    file_path: str,
+    payload: dict | None = None
+) -> None:
 
     file_path = Path(file_path)
     file_path.parent.mkdir(parents=True, exist_ok=True)
