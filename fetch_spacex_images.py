@@ -10,7 +10,12 @@ def create_parser() -> argparse.ArgumentParser:
             SpaceX launch if they were made.\
         "
     )
-    parser.add_argument("--launch_id", help="Id of specific rocket launch.")
+    parser.add_argument(
+        "--launch_id",
+        default="latest",
+        help="Id of specific rocket launch.",
+        type=str,
+    )
 
     return parser
 

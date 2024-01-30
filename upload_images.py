@@ -19,6 +19,7 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-cd",
         "--cooldown",
+        default=14440,
         help="Time between posting images in seconds.",
         type=int
     )
@@ -34,9 +35,6 @@ def main() -> None:
 
     chat_id = args.chat_id
     cooldown = args.cooldown
-
-    if not cooldown:
-        cooldown = 14440
 
     bot = telegram.Bot(token=os.environ["TG_BOT_TOKEN"])
 

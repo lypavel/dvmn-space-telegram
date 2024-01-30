@@ -12,7 +12,12 @@ def create_parser() -> argparse.ArgumentParser:
             in desired count.\
         "
     )
-    parser.add_argument("--count", help="Number of images to download.")
+    parser.add_argument(
+        "--count",
+        default=1,
+        help="Number of images to download.",
+        type=int,
+    )
 
     return parser
 
