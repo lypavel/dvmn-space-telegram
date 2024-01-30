@@ -48,7 +48,7 @@ python3 fetch_spacex_images.py --launch_id <launch_id>
 ### upload_image.py
 
 ```
-python3 upload_image <chat_id> --image_name <image_name>
+python3 upload_image --image_name <image_name>
 ```
 
 Загружает в указанный телеграм чат изображение `<image_name>` из папки `images/`. Если `<image_name>` не указан, то публикуется случайно выбранное изображение из этой же папки.
@@ -58,7 +58,7 @@ python3 upload_image <chat_id> --image_name <image_name>
 ### upload_images.py
 
 ```
-python3 upload_image <chat_id> --cooldown <cooldown>
+python3 upload_image --cooldown <cooldown>
 ```
 
 Бесконечно публикует в указанный телеграм чат изображения из папки `images/`. Если все изображения опубликованы, то они снова перемешиваются и публикуются повторно. Интервал публикации указывается в `<cooldown>` в секундах. Если он не указан, то по-умолчанию равняется четырём часам.
