@@ -35,11 +35,11 @@ def fetch_nasa_epic() -> None:
 def main() -> None:
     load_dotenv()
 
-    fetch_nasa_epic()
+    try:
+        fetch_nasa_epic()
+    except rq.exceptions.HTTPError as http_error:
+        exit(f"Ошибка подключения к серверу:\n{http_error}")
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except rq.exceptions.HTTPError as http_error:
-        exit(f"Ошибка подключения к серверу:\n{http_error}")
+    main()

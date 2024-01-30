@@ -49,11 +49,11 @@ def main() -> None:
 
     count = args.count
 
-    fetch_nasa_apod(count)
+    try:
+        fetch_nasa_apod(count)
+    except rq.exceptions.HTTPError as http_error:
+        exit(f"Ошибка подключения к серверу:\n{http_error}")
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except rq.exceptions.HTTPError as http_error:
-        exit(f"Ошибка подключения к серверу:\n{http_error}")
+    main()
